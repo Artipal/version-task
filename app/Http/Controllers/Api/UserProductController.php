@@ -29,10 +29,10 @@ class UserProductController extends Controller
             'products.*.product_name'=>'required|string',
             'products.*.price'=>'required|numeric|min:0',
             'products.*.quantity'=>'required|integer|min:1',
-            'products.*.type'=>'required|in:flat,discount',
+            'products.*.product_type'=>'required|in:flat,discount',
             'products.*.discount'=>'nullable|numeric|min:0',
         ]);
-
+        dd($request->all());
         DB::transaction(function() use($request){
             $user = User::create([
                 'name'=>$request->name,
@@ -46,7 +46,7 @@ class UserProductController extends Controller
 
             foreach($request->products as $product){
                 $price = $product['price'] * $product['quantity'];
-                if($product['type']=='discount'){
+                if($product['product_type']=='discount'){
                     $price -= $product['discount'];
                 } else {
                     $product['discount'] = 0;

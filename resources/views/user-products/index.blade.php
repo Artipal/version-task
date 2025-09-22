@@ -71,7 +71,7 @@
                                         <li class="flex justify-between items-center">
                                             <span class="font-medium">{{ $product->product_name }}</span>
                                             <span class="text-gray-500">₹{{ $product->price }} × {{ $product->quantity }}</span>
-                                            <span class="text-xs text-gray-400 ml-2">({{ ucfirst($product->type) }}, {{ $product->discount }}% off)</span>
+                                            <span class="text-xs text-gray-400 ml-2">({{ ucfirst($product->product_type) }}, {{ $product->discount }}% off)</span>
                                         </li>
                                     @empty
                                         <li class="text-gray-500 italic">No products</li>
