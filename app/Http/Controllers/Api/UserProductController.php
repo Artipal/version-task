@@ -32,7 +32,6 @@ class UserProductController extends Controller
             'products.*.product_type'=>'required|in:flat,discount',
             'products.*.discount'=>'nullable|numeric|min:0',
         ]);
-        dd($request->all());
         DB::transaction(function() use($request){
             $user = User::create([
                 'name'=>$request->name,
